@@ -4,7 +4,7 @@ class MenuItemsController < ApplicationController
     menu_category_id = params[:menu_category_id]
     menu_item_name = params[:name]
     menu_item_description = params[:description]
-    menu_item_price = params[:price]
+    menu_item_price = (params[:price].to_i)*100
     new_menu_item = MenuItem.new(
       menu_category_id: menu_category_id,
       name: menu_item_name,
