@@ -1,0 +1,13 @@
+<article>
+  <p>Menu Item: <%= @menu_categories.all.map { |cat| cat.name } %>
+<p>Menu Item: <%= @menu_items.all.map { |item| item.name } %> </p>
+<% @menu_categories.all.each do |menu|%>
+  <%= menu.name%><br>
+  <%= @menu_items.get_items(menu.id).all.map do |item|%>
+    <%= item.name %><br>
+  <% end %>
+<% end %>
+
+
+
+</article>
