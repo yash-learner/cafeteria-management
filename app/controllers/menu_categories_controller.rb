@@ -2,7 +2,8 @@ class MenuCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @menu_categories = MenuCategory.all
+    @category = MenuCategory.get_menu_names
+    render "index"
   end
 
   def create

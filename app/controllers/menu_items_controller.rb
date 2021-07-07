@@ -2,8 +2,7 @@ class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @menu_items = MenuItem.all
-    @menu_categories = MenuCategory.all
+    @menu_list = MenuCategory.all
     render "index"
   end
 

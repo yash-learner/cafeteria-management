@@ -1,5 +1,3 @@
-require "menu_category.rb"
-
 class MenuItem < ApplicationRecord
   belongs_to :menu_category
 

@@ -1,3 +1,14 @@
-<article>
-  <%= render partial: "menu_category", collection: @menu_categories %>
-</article>
+<section>
+  <ul>
+<% @category.each do |category| %>
+    <li>
+      <div>
+        <p><%= category.name %></p>
+        <p><% category.menu_items.get_items(category.id).each do |item| %></p>
+          <%= item.name %>
+          <% end %>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</section>
