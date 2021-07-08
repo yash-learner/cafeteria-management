@@ -12,4 +12,6 @@ Rails.application.routes.draw do
   resources :users
   resources :orders
   resources :order_items
+
+  # post "/menu_categories/UpdateActiveMenu" => "menu_categories#updateActiveMenu"
 end

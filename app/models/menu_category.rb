@@ -4,4 +4,19 @@ class MenuCategory < ApplicationRecord
   def self.get_menu_names
     MenuCategory.all.map { |menu| menu }
   end
+
+  def isActive?
+    active
+  end
+
+  def makeActive
+    MenuCategory.all.map { |menu|
+      menu.active = false
+      menu.save
+    }
+    menu = MenuCategory.find(:params[id])
+    menu.active = true
+    menu.save
+    MenuCategory.all.map { |menu| puts "#{menu.name} #{menu.active}" }
+  end
 end
