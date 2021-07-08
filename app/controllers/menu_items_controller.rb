@@ -18,7 +18,7 @@ class MenuItemsController < ApplicationController
       price: menu_item_price,
     )
     if new_menu_item.save
-      render plain: "New item is added to this menu category!"
+      redirect_to "/menus/#{menu_id}"
     end
   end
 

@@ -6,6 +6,9 @@ class MenuCategoriesController < ApplicationController
     render "index"
   end
 
+  def new
+  end
+
   def create
     category_name = params[:category_name]
     new_category = MenuCategory.new(
@@ -22,6 +25,6 @@ class MenuCategoriesController < ApplicationController
     category = MenuCategory.find(id)
     category.name = category_name
     category.save!
-    render plain: "category name has been updated."
+    render ""
   end
 end
