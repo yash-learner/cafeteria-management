@@ -6,6 +6,10 @@ class MenuItemsController < ApplicationController
     render "index"
   end
 
+  def new
+    @menu_list = MenuCategory.get_name
+  end
+
   def create
     menu_category_id = params[:menu_category_id]
     menu_item_name = params[:name]
@@ -18,7 +22,7 @@ class MenuItemsController < ApplicationController
       price: menu_item_price,
     )
     if new_menu_item.save
-      redirect_to "/menus/#{menu_id}"
+      redirect_to "/"
     end
   end
 

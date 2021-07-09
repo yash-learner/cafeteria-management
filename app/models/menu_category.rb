@@ -5,6 +5,10 @@ class MenuCategory < ApplicationRecord
     MenuCategory.all.map { |menu| menu }
   end
 
+  def self.get_name
+    MenuCategory.pluck(:name, :id)
+  end
+
   def isActive?
     active
   end

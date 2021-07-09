@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   post "/signin", to: "sessions#create", as: :sessions
   delete "/signout", to: "sessions#destroy", as: :destroy_sessions
   get "/menu_categories/new", to: "menu_categories#new", as: :new_menu_categories
-
+  get "/menu_items/new", to: "menu_items#new", as: :new_menu_items
   resources :menu_categories
   resources :menu_items
   resources :users

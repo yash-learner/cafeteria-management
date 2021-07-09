@@ -1,0 +1,24 @@
+<section class="UserNew">
+  <%= form_with url: menu_items_path do |form| %>
+    <div class="Form-section">
+      <p class="FormInput-label">Menu Category Id:</p>
+
+      <%= form.select :menu_category_id, options_for_select(@menu_list.collect { |u| u }) %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Menu Item Name:</p>
+      <%= form.text_field :name, class: "Form-input" %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Description:</p>
+      <%= form.text_area :description, class: "Form-input" %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Price:</p>
+      <%= form.phone_field :price, class: "Form-input" %>
+    </div>
+    <div class="Form-section">
+      <%= form.submit "Add", class: "Form-submit" %>
+    </div>
+  <% end %>
+</section>
