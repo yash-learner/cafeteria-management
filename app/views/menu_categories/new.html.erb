@@ -1,24 +1,11 @@
 <section class="UserNew">
-  <p class="FormInput-label">Already have an account? <%= link_to "Sign In", new_sessions_path %></p>
-  <%= form_with url: users_path do |form| %>
+  <%= form_with url: menu_categories_path do |form| %>
     <div class="Form-section">
-      <p class="FormInput-label">First name:</p>
-      <%= form.text_field :first_name, class: "Form-input", autofocus: true %>
+      <p class="FormInput-label">Menu Name:</p>
+      <%= form.text_field :category_name, class: "Form-input", autofocus: true, placeholder: "ex: Dessert" %>
     </div>
     <div class="Form-section">
-      <p class="FormInput-label">Last name:</p>
-      <%= form.text_field :last_name, class: "Form-input" %>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Email:</p>
-      <%= form.email_field :email, class: "Form-input" %>
-    </div>
-    <div class="Form-section">
-      <p class="FormInput-label">Password:</p>
-      <%= form.password_field :password, class: "Form-input" %>
-    </div>
-    <div class="Form-section">
-      <%= form.submit "SIGN UP", class: "Form-submit" %>
+      <%= form.submit "Create", class: "Form-submit" %>
     </div>
   <% end %>
 </section>

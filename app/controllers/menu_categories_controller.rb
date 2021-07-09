@@ -15,7 +15,7 @@ class MenuCategoriesController < ApplicationController
       name: category_name,
     )
     if new_category.save
-      render plain: "new category has created!"
+      redirect_to menu_categories_path
     end
   end
 
