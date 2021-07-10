@@ -1,0 +1,44 @@
+<section class="UserNew">
+  <%= form_with url: "/menu_items/edit", method: "get", class: "GetMenu" do |form| %>
+    <div class="Form-section">
+      <p class="FormInput-label">Menu Category</p>
+      <%= select_tag :menu_category_id, options_for_select(@menu_list.collect { |u| u }, selected: params[:menu_category_id]), include_blank: true, onchange: "this.form.submit()" %>
+    </div>
+    <% if params[:menu_category_id] %>
+    <div class="Form-section">
+    <p class="FormInput-label">Menu Item Name</p>
+    <%= select_tag(:id, options_for_select(@menu_items.collect { |u| u }, selected: params[:id]), include_blank: true, onchange: "this.form.submit()") %>
+    </div>
+   <div>
+   <% end %>
+  </div>
+  <% end %>
+  <%= form_with url: "/menu_items/edit", method: "get", class: "GetMenu" do |form| %>
+
+  <% end %>
+  <% if params[:id] %>
+  <%= form_with url: "/menu_items/#{params[:id]}", method: "put" do |form| %>
+    <div class="Form-section">
+      <p class="FormInput-label">Menu Item Name:</p>
+      <%= form.text_field :name, class: "Form-input", value: "#{@item_values[0][0]}" %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Description:</p>
+      <%= form.text_area :description, class: "Form-input", value: "#{@item_values[0][1]}" %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Price:</p>
+      <%= form.phone_field :price, class: "Form-input", value: "#{@item_values[0][2]}" %>
+    </div>
+    <div class="Form-section">
+      <%= form.submit "Add", class: "Form-submit" %>
+    </div>
+  <% end %>
+  <% end %>
+
+
+
+
+
+
+</section>

@@ -35,3 +35,10 @@
   word-wrap: break-word;
   width: 200px;
 }
+
+.GetMenu {
+  display: flex;
+  height: 20px;
+  align-items: stretch;
+  margin-bottom: 36px;
+}

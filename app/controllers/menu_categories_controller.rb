@@ -9,6 +9,9 @@ class MenuCategoriesController < ApplicationController
   def new
   end
 
+  def show
+  end
+
   def create
     category_name = params[:category_name]
     new_category = MenuCategory.new(
