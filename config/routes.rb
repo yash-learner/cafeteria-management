@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   get "/menu_items/new", to: "menu_items#new", as: :new_menu_items
   get "/menu_items/edit", to: "menu_items#show", as: :show_menu_items
   # put "/menu_items/i", to: "menu_items#update", as: :update_menu_items
+  put "/cart_items/decrement", to: "cart_items#decrement", as: :decrement_cart_items
   resources :menu_categories
   resources :menu_items
   resources :users
   resources :orders
   resources :order_items
+  resources :carts
+  resources :cart_items
 
   # post "/menu_categories/UpdateActiveMenu" => "menu_categories#updateActiveMenu"
 end

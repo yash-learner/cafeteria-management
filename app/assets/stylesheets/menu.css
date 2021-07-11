@@ -1,14 +1,27 @@
-.MenuCategorySection {
+/* .MenuCategorySection {
   max-width: 460px;
   margin: 0 auto;
   margin-top: 60px;
-}
+} */
 
 .Menu {
   text-align: left;
-  /* padding-right: 30px; */
+  padding-right: 30px;
+}
+.column-center {
+  display: inline-block;
+  width: 33.333%;
 }
 
+.column-left {
+  float: left;
+  width: 33.333%;
+}
+
+.column-right {
+  float: right;
+  width: 33.333%;
+}
 .MenuCategory-name {
   font-size: 20px;
   margin-top: 10px;

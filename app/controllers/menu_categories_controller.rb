@@ -1,8 +1,12 @@
 class MenuCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
+  before_action :ensure_user_logged_in
 
   def index
     @category = MenuCategory.get_menu_names
+    cart = current_user.cart
+    @cart_items = CartItem.where("cart_id = ?", cart)
+    # @cart_items = cart.cart_items.pluck(:menu_item_name, :quantity, :price)
     render "index"
   end
 
