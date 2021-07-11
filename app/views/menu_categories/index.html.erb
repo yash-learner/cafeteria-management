@@ -2,7 +2,7 @@
 <ul class="Menu">
 <% @category.each do |category| %>
     <li class="MenuCategory">
-      <div >
+      <div>
         <p class="MenuCategory-name"><%= category.name %></p>
         <% category.menu_items.get_items(category.id).each do |item| %>
         <li class="MenuItem">
@@ -35,14 +35,23 @@
 </ul>
 </section>
 <section class="column-right">
-<ul>
+<ul class="Menu">
+<h3>Cart Items</h3>
+<% if @cart %>
 <% @cart_items.all.each do |item| %>
-    <li>
-        <h1><%= item.menu_item_name %></h1>
-        <h1><%= item.menu_item_price.to_i / 100 %></h1>
-        <h1><%= item.quantity %></h1>
-
+    <li class="MenuItem">
+    <div class="MenuItem-container">
+        <div><h4 class="MenuItem-name"><%= item.menu_item_name %></h4></div>
+    </div>
+    <div>
+    <span><%= item.quantity %></span>
+    <span>₹<%= item.menu_item_price.to_i / 100 %></span>
+    </div>
     </li>
+    <% end %>
 </ul>
+<% else %>
+<h1>Cart is empty<h1>
 <% end %>
+
 </section>

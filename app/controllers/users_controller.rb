@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 
     if user.save
       session[:current_user_id] = user.id
-      redirect_to "/"
+      repost("/carts")
     else
       flash[:error] = user.errors.full_messages.join("<br/>")
       redirect_to "/users/new"
