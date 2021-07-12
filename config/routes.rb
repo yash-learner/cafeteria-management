@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get "/menu_items/edit", to: "menu_items#show", as: :show_menu_items
   # post "/carts", to: "cart#create", as: :create_carts
   # put "/menu_items/i", to: "menu_items#update", as: :update_menu_items
-  put "/cart_items/decrement", to: "cart_items#decrement", as: :decrement_cart_items
+  put "/cart_items/:id/decrement", to: "cart_items#decrement", as: :decrement_cart_items
+  put "/cart_items/:id/increment", to: "cart_items#increment", as: :increment_cart_items
+  post "/cart_items/:id/create" => "cart_items#create"
   resources :menu_categories
   resources :menu_items
   resources :users

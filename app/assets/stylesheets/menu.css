@@ -55,3 +55,15 @@
   align-items: stretch;
   margin-bottom: 36px;
 }
+
+.CartTotal {
+  display: flex;
+  height: 20px;
+  align-items: stretch;
+  margin-bottom: 36px;
+  font-size: 20px;
+}
+
+.CartTotal-price {
+  padding-left: 5px;
+}

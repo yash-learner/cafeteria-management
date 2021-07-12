@@ -5,8 +5,10 @@ class MenuCategoriesController < ApplicationController
   def index
     @category = MenuCategory.get_menu_names
     cart = current_user.cart
-    @cart = current_user.cart.total_price
+    # @cart = current_user.cart.total_price
+    @count = cart.cart_items.count
     @cart_items = CartItem.where("cart_id = ?", cart)
+    @check = CartItem
     # @cart_items = cart.cart_items.pluck(:menu_item_name, :quantity, :price)
     render "index"
   end

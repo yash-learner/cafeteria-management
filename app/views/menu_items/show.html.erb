@@ -28,10 +28,10 @@
     </div>
     <div class="Form-section">
       <p class="FormInput-label">Price:</p>
-      <%= form.phone_field :price, class: "Form-input", value: "#{@item_values[0][2]}" %>
+      <%= form.text_field :price, class: "Form-input", value: "#{@item_values[0][2].to_i / 100}" %>
     </div>
     <div class="Form-section">
-      <%= form.submit "Add", class: "Form-submit" %>
+      <%= form.submit "Save", class: "Form-submit" %>
     </div>
   <% end %>
   <% end %>

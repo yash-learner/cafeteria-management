@@ -1,30 +1,42 @@
 <section class="column-center">
-<ul class="Menu">
-<% @category.each do |category| %>
+  <ul class="Menu">
+  <% @category.each do |category| %>
     <li class="MenuCategory">
       <div>
         <p class="MenuCategory-name"><%= category.name %></p>
         <% category.menu_items.get_items(category.id).each do |item| %>
-        <li class="MenuItem">
-          <div class="MenuItem-container">
-            <div ><h4 class = "MenuItem-name"><%= item.name %></h4></div>
-            <div><span class="MenuItem-price">₹<%= item.price.to_i / 100 %></span></div>
-          </div>
-          <% # <div><span>-</span>Add<span>+</span></div> %>
-          <div class="menu-item-quantity">
-            <%= form_with(url: "/cart_items/#{item.id}", method: "put") do %>
-              <%= submit_tag("-", class: "decrement-button") %>
+          <li class="MenuItem">
+            <div class="MenuItem-container">
+              <div ><h4 class = "MenuItem-name"><%= item.name %></h4></div>
+              <div><span class="MenuItem-price">₹<%= item.price.to_i / 100 %></span></div>
+            </div>
+            <% # <div><span>-</span>Add<span>+</span></div> %>
+            <div class="menu-item-quantity">
+            <% if @check.exists?(:menu_item_id => item.id) %>
+              <%= form_with(url: "/cart_items/#{item.id}/decrement", method: "put") do %>
+                <%= submit_tag("-", class: "decrement-button") %>
+              <% end %>
+              <% if @check.exists?(:quantity => 0) %>
+              <%= form_with(url: "/cart_items/#{item.id}/create", method: "post") do %>
+                <%= submit_tag("Add", class: "increment-button") %>
+              <% end %>
+              <% else %>
+              <%= @check.where("menu_item_id =  ?", item.id).pluck(:quantity)[0] %>
+              <% end %>
+              <%= form_with(url: "/cart_items/#{item.id}/increment", method: "put") do %>
+                <%= submit_tag("+", class: "increment-button") %>
+              <% end %>
+            <% else %>
+              <%= form_with(url: "/cart_items/#{item.id}/create", method: "post") do %>
+                <%= submit_tag("Add", class: "increment-button") %>
+              <% end %>
             <% end %>
-            <p class="menu_item-quantity"><%= item[5] %></p>
-            <%= form_with(url: "/cart_items/#{item.id}/increment", method: "put") do %>
-              <%= submit_tag("+", class: "increment-button") %>
-            <% end %>
-          </div>
-        <li>
-          <% end %>
+            </div>
+          <li>
+        <% end %>
       </div>
     </li>
-    <% end %>
+  <% end %>
   </ul>
 </section>
 <section class="column-left">
@@ -37,7 +49,7 @@
 <section class="column-right">
 <ul class="Menu">
 <h3>Cart Items</h3>
-<% if @cart %>
+<% if @count >= 1 %>
 <% @cart_items.all.each do |item| %>
     <li class="MenuItem">
     <div class="MenuItem-container">
@@ -45,13 +57,17 @@
     </div>
     <div>
     <span><%= item.quantity %></span>
-    <span>₹<%= item.menu_item_price.to_i / 100 %></span>
+    <span>₹<%= item.price.to_i / 100 %></span>
     </div>
     </li>
     <% end %>
 </ul>
+<div class="CartTotal">
+<h4 class="MenuItem-name">Sub Total:<h4>
+<span class="CartTotal-price">₹<%= @cart_items.sum(:price) / 100 %></span>
+</div>
+<%= button_to "CHECKOUT - - ->", "/orders", :method => :get, :form_class => "my_class" %>
 <% else %>
 <h1>Cart is empty<h1>
 <% end %>
-
 </section>
