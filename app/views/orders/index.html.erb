@@ -14,4 +14,4 @@
 <h4 class="MenuItem-name">Sub Total:<h4>
 <span class="CartTotal-price">₹<%= @cart_items.sum(:price) / 100 %></span>
 </div>
-<%= button_to "CHECKOUT - - ->", "/orders", :method => :get, :form_class => "my_class" %>
+<%= button_to "ORDER - - ->", "/orders", :method => :post, :form_class => "my_class" %>
