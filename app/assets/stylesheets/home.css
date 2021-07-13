@@ -1,3 +1,8 @@
+.Home {
+  max-width: 460px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
 .Home-title {
   font-size: 20px;
   margin-bottom: 30px;
