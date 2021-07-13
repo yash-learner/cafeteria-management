@@ -13,7 +13,8 @@
   <body>
     <% if @current_user %>
       <p class="UserHeader">
-        Welcome <%= @current_user.first_name %>!
+        Welcome <%= @current_user.first_name %>&nbsp&nbsp
+        <%= link_to "Orders" %>&nbsp&nbsp
         <%= link_to "Sign Out", destroy_sessions_path, method: "delete" %>
       </p>
     <% end %>
