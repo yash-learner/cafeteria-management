@@ -1,5 +1,6 @@
 class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
+  # before_action :ensure_owner_logged_in
 
   def index
     @menu_list = MenuCategory.all
@@ -11,7 +12,7 @@ class MenuItemsController < ApplicationController
     @menu_list = MenuCategory.get_name
   end
 
-  def show
+  def editMenu
     @menu_list = MenuCategory.get_name
     menu_category_id = params[:menu_category_id]
     @menu_items = MenuItem.get_item_names(menu_category_id)

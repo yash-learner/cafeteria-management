@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   delete "/signout", to: "sessions#destroy", as: :destroy_sessions
   get "/menu_categories/new", to: "menu_categories#new", as: :new_menu_categories
   get "/menu_items/new", to: "menu_items#new", as: :new_menu_items
-  get "/menu_items/edit", to: "menu_items#show", as: :show_menu_items
+  get "/menu_items/editMenu", to: "menu_items#editMenu", as: :show_menu_items
   # post "/carts", to: "cart#create", as: :create_carts
   # put "/menu_items/i", to: "menu_items#update", as: :update_menu_items
   put "/cart_items/:id/decrement", to: "cart_items#decrement", as: :decrement_cart_items
@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   post "/cart_items/:id/create" => "cart_items#create"
   get "/order_items/:id/order" => "order_items#order"
   get "/order_items" => "order_items#index"
-  get "/admin" => "admin#index"
+  # get "/admins" => "admins#index"
   resources :menu_categories
   resources :menu_items
   resources :users
@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :order_items
   resources :carts
   resources :cart_items
+  resources :admins
 
   # post "/menu_categories/UpdateActiveMenu" => "menu_categories#updateActiveMenu"
 end

@@ -1,5 +1,5 @@
 <section class="UserNew">
-  <%= form_with url: "/menu_items/edit", method: "get", class: "GetMenu" do |form| %>
+  <%= form_with url: "/menu_items/editMenu", method: "get", class: "GetMenu" do |form| %>
     <div class="Form-section">
       <p class="FormInput-label">Menu Category</p>
       <%= select_tag :menu_category_id, options_for_select(@menu_list.collect { |u| u }, selected: params[:menu_category_id]), include_blank: true, onchange: "this.form.submit()" %>
@@ -13,7 +13,7 @@
    <% end %>
   </div>
   <% end %>
-  <%= form_with url: "/menu_items/edit", method: "get", class: "GetMenu" do |form| %>
+  <%= form_with url: "/menu_items/editMenu", method: "get", class: "GetMenu" do |form| %>
 
   <% end %>
   <% if params[:id] %>

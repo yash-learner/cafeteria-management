@@ -22,6 +22,7 @@
         Welcome <%= @current_user.first_name %>&nbsp&nbsp
         <%= link_to "Dashboard", "/admin", method: "get" %>&nbsp&nbsp
         <%= link_to "Menu", "/menu_categories", method: "get" %>&nbsp&nbsp
+        <%= link_to "Dashboard", "/admins", method: "get" %>&nbsp&nbsp
         <%= link_to "Orders", "/order_items", method: "get" %>&nbsp&nbsp
         <%= link_to "Sign Out", destroy_sessions_path, method: "delete" %>
       </p>
