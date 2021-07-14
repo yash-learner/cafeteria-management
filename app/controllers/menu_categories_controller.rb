@@ -1,7 +1,7 @@
 class MenuCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
-  before_action :ensure_owner_logged_in, only: [:new, :update, :create, :show]
+  # before_action :ensure_owner_logged_in, only: [:new, :update, :create, :show]
 
   def index
     @category = MenuCategory.get_menu_names
