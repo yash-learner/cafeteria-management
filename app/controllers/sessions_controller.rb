@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
     if user && user.authenticate(params[:password])
       session[:current_user_id] = user.id
+      session[:current_cart_id] = current_user.cart
       redirect_to "/"
     else
       flash[:error] = "Your login attempt is invalid. Please retry. "

@@ -23,6 +23,7 @@ class OrderItemsController < ApplicationController
       order_item.save
     end
     if CartItem.all.count == CartItem.all.count
+      flash[:error] = "Your Order has been placed!"
       logger.info "Successfully placed order"
       CartItem.where("cart_id = ?", current_user.cart).destroy_all
       redirect_to "/menu_categories"

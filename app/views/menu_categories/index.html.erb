@@ -12,16 +12,16 @@
             </div>
             <% # <div><span>-</span>Add<span>+</span></div> %>
             <div class="menu-item-quantity">
-            <% if @check.exists?(:menu_item_id => item.id) %>
+            <% if @cart_items.exists?(:menu_item_id => item.id) %>
               <%= form_with(url: "/cart_items/#{item.id}/decrement", method: "put") do %>
                 <%= submit_tag("-", class: "decrement-button") %>
               <% end %>
-              <% if @check.exists?(:quantity => 0) %>
+              <% if @cart_items.exists?(:quantity => 0) %>
               <%= form_with(url: "/cart_items/#{item.id}/create", method: "post") do %>
                 <%= submit_tag("Add", class: "increment-button") %>
               <% end %>
               <% else %>
-              <%= @check.where("menu_item_id =  ?", item.id).pluck(:quantity)[0] %>
+              <%= @cart_items.where("menu_item_id =  ?", item.id).pluck(:quantity)[0] %>
               <% end %>
               <%= form_with(url: "/cart_items/#{item.id}/increment", method: "put") do %>
                 <%= submit_tag("+", class: "increment-button") %>
