@@ -1,13 +1,17 @@
 class OrderItemsController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
+  # before_action :ensure_owner_logged_in
 
   def index
     # @orders = current_user.orders.pluck(:id)
     # @orders = OrderItem.where(:order_id => current_user.orders.ids)
-    @orders = OrderItem.where("order_id IN (?)", current_user.orders.ids)
-
-    render "index"
+    if current_user.role = "user"
+      @orders = OrderItem.where("order_id IN (?)", current_user.orders.ids)
+      render "index"
+    else
+      @orders = OrderItem.all
+      render "index"
+    end
   end
 
   def order

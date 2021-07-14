@@ -1,6 +1,5 @@
 class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :ensure_owner_logged_in
 
   def index
     @menu_list = MenuCategory.all

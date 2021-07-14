@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
-  skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
+  # before_action :ensure_owner_logged_in
 
   def index
     cart = current_user.cart
