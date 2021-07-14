@@ -2,6 +2,14 @@ class OrderItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
 
+  def index
+    # @orders = current_user.orders.pluck(:id)
+    # @orders = OrderItem.where(:order_id => current_user.orders.ids)
+    @orders = OrderItem.where("order_id IN (?)", current_user.orders.ids)
+
+    render "index"
+  end
+
   def order
     CartItem.all.each do |item|
       order_item = OrderItem.new(

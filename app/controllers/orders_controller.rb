@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     order = Order.new(
       date: Date.today,
       user_id: current_user.id,
-      delivered_at: false,
+      delivered_at: nil,
     )
     if order.save
       # session[:current_order_id] = order.id

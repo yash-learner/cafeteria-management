@@ -13,7 +13,8 @@ Rails.application.routes.draw do
   put "/cart_items/:id/decrement", to: "cart_items#decrement", as: :decrement_cart_items
   put "/cart_items/:id/increment", to: "cart_items#increment", as: :increment_cart_items
   post "/cart_items/:id/create" => "cart_items#create"
-  get "order_items/:id/order" => "order_items#order"
+  get "/order_items/:id/order" => "order_items#order"
+  get "/order_items" => "order_items#index"
   resources :menu_categories
   resources :menu_items
   resources :users

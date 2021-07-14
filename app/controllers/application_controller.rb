@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def ensure_owner_logged_in
+    unless current_user && current_user.role == "owner"
+      flash[:error] = "Admin previlages cannot be accessed"
+      redirect_to "/"
+    end
+  end
+
   def current_user
     # TODO: memoziation
     return @current_user if @current_user
