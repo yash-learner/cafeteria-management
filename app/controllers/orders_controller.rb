@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
-  # before_action :ensure_owner_logged_in
 
   def index
     cart = current_user.cart
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
     order = Order.new(
       date: Date.today,
       user_id: current_user.id,
-      delivered_at: nil,
+      delivered_at: false,
     )
     if order.save
       # session[:current_order_id] = order.id
