@@ -20,4 +20,13 @@ class OrdersController < ApplicationController
       redirect_to "/order_items/#{order.id}/order"
     end
   end
+
+  def update
+    id = params[:id]
+    order = Order.find(id)
+    order.delivered_at = DateTime.now
+    order.save
+    flash[:error] = "order has been updated"
+    redirect_to "/order_items"
+  end
 end
