@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   post "/users/:id/removeAsClerk" => "users#removeAsClerk"
   post "/users/:id/makeAsClerk" => "users#makeAsClerk"
+  post "/users/create_clerk" => "users#createClerk"
+  get "/users/new_clerk" => "users#newClerk"
 
   resources :menu_categories
   resources :menu_items

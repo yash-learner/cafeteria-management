@@ -2,7 +2,6 @@
   <%= form_with url: menu_items_path do |form| %>
     <div class="Form-section">
       <p class="FormInput-label">Menu Category Id:</p>
-
       <%= form.select :menu_category_id, options_for_select(@menu_list.collect { |u| u }) %>
     </div>
     <div class="Form-section">
