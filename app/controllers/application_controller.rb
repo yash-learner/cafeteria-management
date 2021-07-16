@@ -9,7 +9,7 @@ class ApplicationController < ActionController::Base
 
   def ensure_owner_logged_in
     unless current_user && current_user.role == "owner"
-      flash[:error] = "Admin previlages cannot be accessed"
+      flash[:error] = "Access Denied /!\\"
       redirect_to "/"
     end
   end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
   skip_before_action :ensure_user_logged_in, only: [:new, :create]
+  before_action :ensure_owner_logged_in, only: [:index, :removeAsClerk, :makeAsClerk]
 
   def index
     @users = User
