@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   get "/order_items/:id/order" => "order_items#order"
   get "/order_items" => "order_items#index"
   get "/admins" => "admins#index"
+
+  post "/users/:id/removeAsClerk" => "users#removeAsClerk"
+  post "/users/:id/makeAsClerk" => "users#makeAsClerk"
+
   resources :menu_categories
   resources :menu_items
   resources :users

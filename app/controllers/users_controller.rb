@@ -1,6 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
-  skip_before_action :ensure_user_logged_in
+  skip_before_action :ensure_user_logged_in, only: [:new, :create]
+
+  def index
+    @users = User
+    render "index"
+  end
 
   def new
     render "users/new"
@@ -24,5 +29,21 @@ class UsersController < ApplicationController
       flash[:error] = user.errors.full_messages.join("<br/>")
       redirect_to "/users/new"
     end
+  end
+
+  def removeAsClerk
+    id = params[:id]
+    user = User.find(id)
+    user.role = "customer"
+    user.save
+    redirect_to users_path
+  end
+
+  def makeAsClerk
+    id = params[:id]
+    user = User.find(id)
+    user.role = "clerk"
+    user.save
+    redirect_to users_path
   end
 end

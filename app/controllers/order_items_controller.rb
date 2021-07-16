@@ -5,7 +5,7 @@ class OrderItemsController < ApplicationController
   def index
     # @orders = current_user.orders.pluck(:id)
     # @orders = OrderItem.where(:order_id => current_user.orders.ids)
-    if current_user.role == "user"
+    if current_user.role == "customer"
       @orders = OrderItem.where("order_id IN (?)", current_user.orders.ids)
       render "index"
     end
