@@ -5,6 +5,13 @@
       <%= form.text_field :category_name, class: "Form-input", autofocus: true, placeholder: "ex: Dessert" %>
     </div>
     <div class="Form-section">
+      <p class="FormInput-label">Enable Menu Category:</p>
+      <%= form.radio_button :active, "", :value => true %>
+      <%= form.label "Yes" %>
+      <%= form.radio_button :active, "", :value => false %>
+      <%= form.label "No" %>
+    </div>
+    <div class="Form-section">
       <%= form.submit "Create", class: "Form-submit" %>
     </div>
   <% end %>
