@@ -10,7 +10,7 @@
             <% end %>
           <% else %>
             <%= form_with(url: "/menu_categories/#{category.id}/toggle_menu_status", method: "post") do %>
-              <%= submit_tag("activate this category", class: "user-change-role", data: { disable_with: "Appointing.." }) %>
+              <%= submit_tag("activate this category", class: "user-change-role", data: { disable_with: "activating.." }) %>
             <% end %>
           <% end %>
         </p>
