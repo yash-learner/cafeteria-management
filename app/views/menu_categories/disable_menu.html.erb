@@ -1,0 +1,39 @@
+<section class="column-center">
+  <ul class="Menu">
+  <% @category.get_menu.each do |category| %>
+    <li class="MenuCategory">
+      <div>
+        <p class="MenuCategory-name"><%= category.name %>
+          <% if category.active == true %>
+            <%= form_with(url: "/menu_categories/#{category.id}/toggle_menu_status", method: "post") do %>
+              <%= submit_tag("deactivate this category", class: "user-change-role", data: { disable_with: "Removing.." }) %>
+            <% end %>
+          <% else %>
+            <%= form_with(url: "/menu_categories/#{category.id}/toggle_menu_status", method: "post") do %>
+              <%= submit_tag("activate this category", class: "user-change-role", data: { disable_with: "Appointing.." }) %>
+            <% end %>
+          <% end %>
+        </p>
+        <% category.menu_items.get_items(category.id).each do |item| %>
+          <li class="MenuItem">
+            <div class="MenuItem-container">
+              <div ><h4 class = "MenuItem-name"><%= item.name %></h4></div>
+              <div><span class="MenuItem-price">₹<%= item.price.to_i / 100 %></span></div>
+            </div>
+            <% # <div><span>-</span>Add<span>+</span></div> %>
+          <li>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+</section>
+<section class="column-left">
+<ul>
+    <li>
+        <h1>hello</h1>
+    </li>
+</ul>
+</section>
+<section class="column-right">
+</section>

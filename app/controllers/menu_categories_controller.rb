@@ -1,7 +1,7 @@
 class MenuCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
-  before_action :ensure_owner_logged_in, only: [:new, :update, :create]
+  before_action :ensure_owner_logged_in, only: [:new, :update, :create, :toggleMenuStatus, :allMenu]
 
   def index
     @category = MenuCategory.get_menu_names
@@ -37,5 +37,19 @@ class MenuCategoriesController < ApplicationController
     category.name = category_name
     category.save!
     render ""
+  end
+
+  def toggleMenuStatus
+    menu_id = params[:id]
+    menu = MenuCategory.find(menu_id)
+    menu_status = menu.active
+    menu.active = !menu_status
+    menu.save
+    redirect_to "/menu_categories"
+  end
+
+  def allMenu
+    @category = MenuCategory
+    render "disable_menu"
   end
 end

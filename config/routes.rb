@@ -22,6 +22,9 @@ Rails.application.routes.draw do
   post "/users/create_clerk" => "users#createClerk"
   get "/users/new_clerk" => "users#newClerk"
 
+  get "/menu_categories/change_menu_category_status" => "menu_categories#allMenu"
+  post "/menu_categories/:id/toggle_menu_status" => "menu_categories#toggleMenuStatus"
+
   resources :menu_categories
   resources :menu_items
   resources :users

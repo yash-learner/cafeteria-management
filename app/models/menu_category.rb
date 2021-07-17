@@ -1,7 +1,7 @@
 class MenuCategory < ApplicationRecord
   has_many :menu_items
 
-  def self.get_menu_names
+  def self.get_menu
     MenuCategory.all.map { |menu| menu }
   end
 
@@ -9,18 +9,23 @@ class MenuCategory < ApplicationRecord
     MenuCategory.pluck(:name, :id)
   end
 
-  def isActive?
-    active
+  def self.get_menu_names
+    MenuCategory.where("active", true).all.map { |menu| menu }
   end
 
-  def makeActive
-    MenuCategory.all.map { |menu|
-      menu.active = false
-      menu.save
-    }
-    menu = MenuCategory.find(:params[id])
-    menu.active = true
-    menu.save
-    MenuCategory.all.map { |menu| puts "#{menu.name} #{menu.active}" }
-  end
+  # def self.deactive
+  #   where(active: false)
+  # end
+
+  # def self.active
+  #   where(active: true)
+  # end
+
+  # def self.status(active)
+  #   if active == true
+  #     active
+  #   else
+  #     deactive
+  #   end
+  # end
 end
