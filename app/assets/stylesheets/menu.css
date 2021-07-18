@@ -67,3 +67,17 @@
 .CartTotal-price {
   padding-left: 5px;
 }
+
+.OrderId {
+  display: flex;
+  align-items: stretch;
+}
+
+.OrderStatus {
+  color: green;
+  background-color: aliceblue;
+}
+
+.OrderButton {
+  padding-left: 10px;
+}

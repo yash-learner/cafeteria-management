@@ -1,6 +1,16 @@
 <section class="Home">
 <ul class="Menu">
+  <% @ids.each do |id| %>
+  <div class="OrderId">
+      <%= id %>
+      <div class="OrderButton">
+      <% if @current_user.role == "owner" %>
+          <%= button_to "Mark as Delivered", "/orders/#{id}", :method => :put, data: { disable_with: "delivering..." } %>
+      <% end %>
+      </div>
+  </div>
   <% @orders.all.each do |order_item| %>
+        <% if order_item.order_id == id %>
           <li class="MenuItem">
             <div class="MenuItem-container">
               <div ><h4 class = "MenuItem-name"><%= order_item.menu_item_name %></h4></div>
@@ -10,18 +20,15 @@
               <div><span class="MenuItem-price">₹<%= order_item.price / 100 %></span></div>
               <div>
                 <% if order_item.order.delivered_at %>
-                <p>Delivered</p>
+                <p class="OrderStatus">Delivered</p>
                 <% else %>
                 <p>Not Delivered</p>
                 <% end %>
               </div>
             </div>
-            <% if @current_user.role == "owner" %>
-            <div class="MenuItem-container">
-                <%= button_to "Update", "/orders/#{order_item.order_id}", :method => :put %>
-            </div>
-            <% end %>
+        <% end %>
     </li>
   <% end %>
+<% end %>
 </ul>
 </section>
