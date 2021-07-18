@@ -7,7 +7,7 @@ class OrderItemsController < ApplicationController
     # @orders = OrderItem.where(:order_id => current_user.orders.ids)
     if current_user.role == "customer"
       @orders = OrderItem.where("order_id IN (?)", current_user.orders.ids).order(:order_id)
-      @ids = Order.where("id IN (?)", current_user.orders.ids).pluck(:id, :delivered_at)
+      @orderids = Order.all.where("id IN (?)", current_user.orders.ids).order(:id)
       # @ids = Order.where("order_id IN (?)", current_user.orders.ids).as_json(only: [:id, :name])
       # @orders.all.map do |order_item|
       #   order_item.order.delivered_at
@@ -15,7 +15,7 @@ class OrderItemsController < ApplicationController
       render "index"
     end
     if current_user.role == "owner"
-      @ids = Order.all.order(:id).pluck(:id)
+      @orderids = Order.all.order(:id)
       @orders = OrderItem.all.order(:order_id)
       render "index"
     end

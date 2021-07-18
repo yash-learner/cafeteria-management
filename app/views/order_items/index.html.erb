@@ -1,16 +1,16 @@
 <section class="Home">
 <ul class="Menu">
-  <% @ids.each do |id| %>
+  <% @orderids.all.each do |order| %>
   <div class="OrderId">
-      <%= id %>
+      Order No:<%= order.id %>
       <div class="OrderButton">
-      <% if @current_user.role == "owner" %>
-          <%= button_to "Mark as Delivered", "/orders/#{id}", :method => :put, data: { disable_with: "delivering..." } %>
+      <% if @current_user.role == "owner" and order.delivered_at == nil %>
+          <%= button_to "Mark as Delivered", "/orders/#{order.id}", :method => :put, data: { disable_with: "delivering..." } %>
       <% end %>
       </div>
   </div>
   <% @orders.all.each do |order_item| %>
-        <% if order_item.order_id == id %>
+        <% if order_item.order_id == order.id %>
           <li class="MenuItem">
             <div class="MenuItem-container">
               <div ><h4 class = "MenuItem-name"><%= order_item.menu_item_name %></h4></div>
