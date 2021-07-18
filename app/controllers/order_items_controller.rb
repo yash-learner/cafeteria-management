@@ -14,7 +14,7 @@ class OrderItemsController < ApplicationController
       # end
       render "index"
     end
-    if current_user.role == "owner"
+    if current_user.role == "owner" or current_user.role == "clerk"
       @orderids = Order.all.order(:id)
       @orders = OrderItem.all.order(:order_id)
       render "index"

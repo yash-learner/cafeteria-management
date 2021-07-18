@@ -4,7 +4,7 @@
   <div class="OrderId">
       Order No:<%= order.id %>
       <div class="OrderButton">
-      <% if @current_user.role == "owner" and order.delivered_at == nil %>
+      <% if (@current_user.role == "owner" or @current_user.role == "clerk") and order.delivered_at == nil %>
           <%= button_to "Mark as Delivered", "/orders/#{order.id}", :method => :put, data: { disable_with: "delivering..." } %>
       <% end %>
       </div>
