@@ -79,5 +79,9 @@
 }
 
 .OrderButton {
-  padding-left: 10px;
+  padding-left: 90px;
+}
+
+.OrderPrice {
+  padding-left: 20px;
 }

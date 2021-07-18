@@ -3,6 +3,7 @@
   <% @orderids.all.each do |order| %>
   <div class="OrderId">
       Order No:<%= order.id %>
+      <p class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></p>
       <div class="OrderButton">
       <% if (@current_user.role == "owner" or @current_user.role == "clerk") and order.delivered_at == nil %>
           <%= button_to "Mark as Delivered", "/orders/#{order.id}", :method => :put, data: { disable_with: "delivering..." } %>
