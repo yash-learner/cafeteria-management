@@ -14,10 +14,13 @@ class OrdersController < ApplicationController
       user_id: current_user.id,
       delivered_at: nil,
     )
-    if order.save
+    if current_user.cart.cart_items.sum(:price) > 0
       # session[:current_order_id] = order.id
-
+      order.save
       redirect_to "/order_items/#{order.id}/order"
+    else
+      flash[:error] = "Your cart is empty please add items to place an order!"
+      redirect_to "/menu_categories"
     end
   end
 
