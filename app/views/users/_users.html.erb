@@ -16,7 +16,7 @@
         <%= form_with(url: "/users/#{user.id}/removeAsClerk", method: "post") do %>
           <%= submit_tag("Remove As Clerk", class: "user-change-role", data: { disable_with: "Removing.." }) %>
         <% end %>
-      <% else %>
+      <% elsif role != "owner" %>
         <%= form_with(url: "/users/#{user.id}/makeAsClerk", method: "post") do %>
           <%= submit_tag("Appoint As Clerk", class: "user-change-role", data: { disable_with: "Appointing.." }) %>
         <% end %>
