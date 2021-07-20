@@ -1,6 +1,8 @@
 class MenuCategory < ApplicationRecord
   has_many :menu_items
 
+  validates :name, :active, presence: true
+
   def self.get_menu
     MenuCategory.all.map { |menu| menu }
   end

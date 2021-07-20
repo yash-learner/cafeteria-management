@@ -37,9 +37,13 @@ class MenuCategoriesController < ApplicationController
     category = MenuCategory.find(id)
     category.name = category_name
     category.active = params[:active]
-    category.save!
-    flash[:error] = "Menu Category name has been updated!"
-    redirect_to "/menu_categories"
+    if category.save
+      flash[:error] = "Menu Category name has been updated!"
+      redirect_to "/menu_categories"
+    else
+      flash[:error] = category.errors.full_messages.join("<br/>")
+      redirect_to "/menu_categories"
+    end
   end
 
   def toggleMenuStatus
