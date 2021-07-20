@@ -1,6 +1,6 @@
 class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :ensure_owner_logged_in, only: [:new, :editMenu, :create, :update, :destroy]
+  before_action :ensure_owner_logged_in, only: [:new, :editMenu, :create, :update, :destroy, :updateEach]
 
   def index
     @menu_list = MenuCategory.all
@@ -49,14 +49,8 @@ class MenuItemsController < ApplicationController
     item.description = menu_item_description
     item.price = menu_item_price
     item.save!
+    flash[:error] = "Menu Item has been updated!"
     redirect_to "/menu_categories"
-
-    # menu_item = MenuItem.new(
-    #   menu_category_id: menu_category_id,
-    #   name: menu_item_name,
-    #   description: menu_item_description,
-    #   price: menu_item_price,
-    # )
   end
 
   def destroy
@@ -65,6 +59,12 @@ class MenuItemsController < ApplicationController
     menu_item.destroy
     flash[:error] = "Menu Item #{menu_item.name} in #{menu_item.menu_category.name} is Deleted!"
     redirect_to "/menu_categories"
+  end
+
+  def updateEach
+    item_id = params[:id]
+    @item_values = MenuItem.get_item_values(item_id)
+    render "/menu_items/update"
   end
 end
 

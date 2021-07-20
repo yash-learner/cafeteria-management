@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
   get "/menu_categories/change_menu_category_status" => "menu_categories#allMenu"
   post "/menu_categories/:id/toggle_menu_status" => "menu_categories#toggleMenuStatus"
-
+  get "/menu_items/:id/update_each" => "menu_items#updateEach"
   resources :menu_categories
   resources :menu_items
   resources :users
