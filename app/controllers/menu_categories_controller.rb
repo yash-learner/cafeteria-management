@@ -27,6 +27,7 @@ class MenuCategoriesController < ApplicationController
       active: params[:active],
     )
     if new_category.save
+      flash[:error] = "Menu Category #{new_category.name} has been created!"
       redirect_to menu_categories_path
     else
       flash[:error] = new_category.errors.full_messages.join("<br/>")

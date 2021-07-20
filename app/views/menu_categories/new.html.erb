@@ -6,9 +6,9 @@
     </div>
     <div class="Form-section">
       <p class="FormInput-label">Enable Menu Category:</p>
-      <%= form.radio_button :active, "", :value => true %>
+      <%= form.radio_button :active, true %>
       <%= form.label "Yes" %>
-      <%= form.radio_button :active, "", :value => false %>
+      <%= form.radio_button :active, false %>
       <%= form.label "No" %>
     </div>
     <div class="Form-section">

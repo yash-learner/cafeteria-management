@@ -1,5 +1,6 @@
 class MenuItem < ApplicationRecord
   belongs_to :menu_category
+  validates :name, :description, :price, presence: true
 
   def self.get_items(id)
     where("menu_category_id = ?", id)

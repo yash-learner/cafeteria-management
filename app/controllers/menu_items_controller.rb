@@ -35,7 +35,11 @@ class MenuItemsController < ApplicationController
       price: menu_item_price,
     )
     if new_menu_item.save
+      flash[:error] = "Menu Item #{new_menu_item.name} has been created in #{new_menu_item.menu_category.name}!"
       redirect_to "/"
+    else
+      flash[:error] = new_menu_item.errors.full_messages.join("<br/>")
+      redirect_to "/menu_items/new"
     end
   end
 
