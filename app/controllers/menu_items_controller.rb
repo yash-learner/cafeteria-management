@@ -52,9 +52,13 @@ class MenuItemsController < ApplicationController
     item.name = menu_item_name
     item.description = menu_item_description
     item.price = menu_item_price
-    item.save!
-    flash[:error] = "Menu Item has been updated!"
-    redirect_to "/menu_categories"
+    if item.save
+      flash[:error] = "Menu Item has been updated!"
+      redirect_to "/menu_categories"
+    else
+      flash[:error] = "Please! fill all the fields"
+      redirect_to "/menu_items/#{item.id}/update_each"
+    end
   end
 
   def destroy
