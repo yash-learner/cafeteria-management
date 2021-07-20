@@ -9,10 +9,15 @@ class OrdersController < ApplicationController
   end
 
   def create
+    if current_user.role != "customer"
+      delivered_at = DateTime.now
+    else
+      delivered_at = nil
+    end
     order = Order.new(
       date: Date.today,
       user_id: current_user.id,
-      delivered_at: nil,
+      delivered_at: delivered_at,
     )
     if current_user.cart.cart_items.sum(:price) > 0
       # session[:current_order_id] = order.id

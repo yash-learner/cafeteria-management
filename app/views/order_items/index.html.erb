@@ -1,35 +1,38 @@
 <section class="Home">
 <ul class="Menu">
+  <li>
+  <div>
   <% @orderids.all.each do |order| %>
   <div class="OrderId">
       Order No:<%= order.id %>
-      <p class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></p>
       <div class="OrderButton">
-      <% if (@current_user.role == "owner" or @current_user.role == "clerk") and order.delivered_at == nil %>
+      <% if (@current_user.role == "owner" or @current_user.role == "clerk") and (order.delivered_at == nil) %>
           <%= button_to "Mark as Delivered", "/orders/#{order.id}", :method => :put, data: { disable_with: "delivering..." } %>
+      <% else %>
+          <p class="OrderStatus">Delivered</p>
       <% end %>
       </div>
   </div>
   <% @orders.all.each do |order_item| %>
         <% if order_item.order_id == order.id %>
+        <div class="Order">
           <li class="MenuItem">
             <div class="MenuItem-container">
               <div ><h4 class = "MenuItem-name"><%= order_item.menu_item_name %></h4></div>
-              <div><span class="MenuItem-price"><%= order_item.quantity %></span></div>
             </div>
             <div class="MenuItem-container">
-              <div><span class="MenuItem-price">₹<%= order_item.price / 100 %></span></div>
-              <div>
-                <% if order_item.order.delivered_at %>
-                <p class="OrderStatus">Delivered</p>
-                <% else %>
-                <p>Not Delivered</p>
-                <% end %>
-              </div>
+              <div><span class="MenuItem-price"><%= order_item.menu_item_price / 100 %> X <%= order_item.quantity %>= ₹<%= order_item.price / 100 %></span></div>
             </div>
         <% end %>
-    </li>
+          </li>
+    </div>
+
   <% end %>
+            <div class="MenuItem-container">
+              <div><span class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></span></div>
+            </div>
+    </div>
+  </li>
 <% end %>
 </ul>
 </section>

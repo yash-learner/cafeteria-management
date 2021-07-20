@@ -37,6 +37,8 @@
   padding-left: 5px;
   font-size: 15px;
   line-height: 20px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   /* align-items: center; */
 }
 
@@ -71,8 +73,15 @@
 .OrderId {
   display: flex;
   align-items: stretch;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: solid green;
+  background-color: grey;
+  margin-top: 30px;
 }
-
+/* .Order {
+  border: solid green;
+} */
 .OrderStatus {
   color: green;
   background-color: aliceblue;
@@ -83,5 +92,9 @@
 }
 
 .OrderPrice {
-  padding-left: 20px;
+  padding-left: 100px;
+  text-align: center;
+  font-weight: bolder;
 }
+
+/* <p class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></p> */
