@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
     order = Order.find(id)
     order.delivered_at = DateTime.now
     order.save
-    flash[:error] = "order has been updated"
+    flash[:error] = "order with id #{order.id} by #{order.user.first_name} has been delivered"
     redirect_to "/order_items"
   end
 end
