@@ -1,4 +1,4 @@
-<section class="Home">
+<section class="Order">
 <ul class="Menu">
   <li>
   <div>
@@ -12,10 +12,19 @@
           <p class="OrderStatus">Delivered</p>
       <% end %>
       </div>
+      <div>
+      <% if order.user.role == "customer" %>
+      <%= order.user.first_name %>
+      <% else %>
+      Walk In Customer
+      <% end %>
+      </div>
   </div>
+
+
   <% @orders.all.each do |order_item| %>
         <% if order_item.order_id == order.id %>
-        <div class="Order">
+        <div>
           <li class="MenuItem">
             <div class="MenuItem-container">
               <div ><h4 class = "MenuItem-name"><%= order_item.menu_item_name %></h4></div>

@@ -72,18 +72,19 @@
 
 .OrderId {
   display: flex;
-  align-items: stretch;
+  /* align-items: stretch; */
   padding-top: 10px;
   padding-bottom: 10px;
-  border: solid green;
-  background-color: grey;
+  border: solid #48bb78;
+  background-color: lightgrey;
   margin-top: 30px;
+  justify-content: space-around;
 }
 /* .Order {
   border: solid green;
 } */
 .OrderStatus {
-  color: green;
+  color: #48bb78;
   background-color: aliceblue;
 }
 
@@ -97,4 +98,9 @@
   font-weight: bolder;
 }
 
+.Order {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
 /* <p class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></p> */
