@@ -64,10 +64,14 @@ class UsersController < ApplicationController
 
     if user.save
       flash[:error] = "#{params[:user_role]} account with name #{params[:first_name] + " " + params[:last_name]} is created! "
-      repost("/carts")
-    else
-      flash[:error] = user.errors.full_messages.join("<br/>")
-      redirect_to "/users/new"
+      cart = Cart.new(
+        date: Date.today,
+        user_id: user.id,
+      )
+      if cart.save
+        flash[:error] = "cart with id #{cart.id} is created"
+        redirect_to "/menu_categories" and return
+      end
     end
   end
 end
