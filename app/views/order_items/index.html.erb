@@ -8,8 +8,10 @@
       <div class="OrderButton">
       <% if (@current_user.role == "owner" or @current_user.role == "clerk") and (order.delivered_at == nil) %>
           <%= button_to "Mark as Delivered", "/orders/#{order.id}", :method => :put, data: { disable_with: "delivering..." } %>
+      <% elsif @current_user.role == "customer" and (order.delivered_at == nil) %>
+          <p class="OrderStatus-red">Not Delivered</p>
       <% else %>
-          <p class="OrderStatus">Delivered</p>
+          <p class="OrderStatus-green">Delivered</p>
       <% end %>
       </div>
       <div>

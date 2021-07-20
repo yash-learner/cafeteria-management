@@ -85,8 +85,13 @@
 /* .Order {
   border: solid green;
 } */
-.OrderStatus {
+.OrderStatus-green {
   color: #48bb78;
+  background-color: aliceblue;
+}
+
+.OrderStatus-red {
+  color: red;
   background-color: aliceblue;
 }
 
