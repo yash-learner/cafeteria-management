@@ -32,6 +32,13 @@
               <% end %>
             <% end %>
             </div>
+            <% if @current_user.role == "owner" %>
+            <div>
+              <%= form_with(url: "/menu_items/#{item.id}", method: "delete") do %>
+                <%= image_submit_tag("delete.png", onclick: "this.form.submit()") %>
+            </div>
+              <% end %>
+            <% end %>
           <li>
         <% end %>
       </div>

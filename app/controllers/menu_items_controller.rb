@@ -1,6 +1,6 @@
 class MenuItemsController < ApplicationController
   skip_before_action :verify_authenticity_token
-  before_action :ensure_owner_logged_in, only: [:new, :editMenu, :create, :update]
+  before_action :ensure_owner_logged_in, only: [:new, :editMenu, :create, :update, :destroy]
 
   def index
     @menu_list = MenuCategory.all
@@ -57,6 +57,14 @@ class MenuItemsController < ApplicationController
     #   description: menu_item_description,
     #   price: menu_item_price,
     # )
+  end
+
+  def destroy
+    id = params[:id]
+    menu_item = MenuItem.find(id)
+    menu_item.destroy
+    flash[:error] = "Menu Item #{menu_item.name} in #{menu_item.menu_category.name} is Deleted!"
+    redirect_to "/menu_categories"
   end
 end
 
