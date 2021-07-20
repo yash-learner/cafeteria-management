@@ -1,0 +1,18 @@
+<section class="UserNew">
+  <%= form_with url: "/menu_categories/#{params[:id]}", method: "put" do |form| %>
+    <div class="Form-section">
+      <p class="FormInput-label">Menu Name:</p>
+      <%= form.text_field :category_name, class: "Form-input", autofocus: true, placeholder: "ex: Dessert", value: menu_category.name %>
+    </div>
+    <div class="Form-section">
+      <p class="FormInput-label">Enable Menu Category:</p>
+      <%= form.radio_button :active, true %>
+      <%= form.label "Yes" %>
+      <%= form.radio_button :active, false %>
+      <%= form.label "No" %>
+    </div>
+    <div class="Form-section">
+      <%= form.submit "Update", class: "Form-submit" %>
+    </div>
+  <% end %>
+</section>

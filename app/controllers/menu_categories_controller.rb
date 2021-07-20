@@ -1,7 +1,7 @@
 class MenuCategoriesController < ApplicationController
   skip_before_action :verify_authenticity_token
   before_action :ensure_user_logged_in
-  before_action :ensure_owner_logged_in, only: [:new, :update, :create, :toggleMenuStatus, :allMenu]
+  before_action :ensure_owner_logged_in, only: [:new, :update, :create, :toggleMenuStatus, :allMenu, :edit]
 
   def index
     @category = MenuCategory.get_menu_names
@@ -36,8 +36,10 @@ class MenuCategoriesController < ApplicationController
     category_name = params[:category_name]
     category = MenuCategory.find(id)
     category.name = category_name
+    category.active = params[:active]
     category.save!
-    render ""
+    flash[:error] = "Menu Category name has been updated!"
+    redirect_to "/menu_categories"
   end
 
   def toggleMenuStatus
@@ -52,5 +54,19 @@ class MenuCategoriesController < ApplicationController
   def allMenu
     @category = MenuCategory
     render "disable_menu"
+  end
+
+  def edit
+    menu_category_id = params[:id]
+    @menu_category = MenuCategory.find(menu_category_id)
+    render "edit", locals: { menu_category: @menu_category }
+  end
+
+  def destroy
+    id = params[:id]
+    menu_item = MenuCategory.find(id)
+    menu_item.destroy
+    flash[:error] = "Menu Item Category is Deleted!"
+    redirect_to "/menu_categories"
   end
 end

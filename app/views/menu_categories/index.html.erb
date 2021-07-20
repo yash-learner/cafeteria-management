@@ -3,7 +3,11 @@
   <% @category.each do |category| %>
     <li class="MenuCategory">
       <div>
-        <p class="MenuCategory-name"><%= category.name %></p>
+        <p class="MenuCategory-name"><%= category.name %>
+          <% if @current_user.role == "owner" %>
+            <%= link_to "Edit", "/menu_categories/#{category.id}/edit", method: "get" %>&nbsp&nbsp
+          <% end %>
+        </p>
         <% category.menu_items.get_items(category.id).each do |item| %>
           <li class="MenuItem">
             <div class="MenuItem-container">
