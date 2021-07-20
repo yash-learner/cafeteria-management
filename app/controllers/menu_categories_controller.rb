@@ -28,6 +28,9 @@ class MenuCategoriesController < ApplicationController
     )
     if new_category.save
       redirect_to menu_categories_path
+    else
+      flash[:error] = new_category.errors.full_messages.join("<br/>")
+      redirect_to "/menu_categories/new"
     end
   end
 
@@ -42,7 +45,7 @@ class MenuCategoriesController < ApplicationController
       redirect_to "/menu_categories"
     else
       flash[:error] = category.errors.full_messages.join("<br/>")
-      redirect_to "/menu_categories"
+      redirect_to "/menu_categories/#{category.id}/edit"
     end
   end
 
