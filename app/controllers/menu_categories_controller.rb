@@ -53,10 +53,18 @@ class MenuCategoriesController < ApplicationController
   def toggleMenuStatus
     menu_id = params[:id]
     menu = MenuCategory.find(menu_id)
-    menu_status = menu.active
-    menu.active = !menu_status
-    menu.save
-    redirect_to "/menu_categories"
+    if menu.active
+      active = false
+    else
+      active = true
+    end
+    menu.active = active
+    if menu.save
+      redirect_to "/menu_categories"
+    else
+      flash[:error] = "#{menu.active}"
+      redirect_to "/menu_categories/change_menu_category_status"
+    end
   end
 
   def allMenu
