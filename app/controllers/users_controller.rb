@@ -36,16 +36,26 @@ class UsersController < ApplicationController
     id = params[:id]
     user = User.find(id)
     user.role = "customer"
-    user.save
-    redirect_to users_path
+    if user.save(:validate => false)
+      flash[:error] = "Role Changed"
+      redirect_to "/users"
+    else
+      flash[:error] = "Role not Changed"
+      redirect_to "/users"
+    end
   end
 
   def makeAsClerk
     id = params[:id]
     user = User.find(id)
     user.role = "clerk"
-    user.save
-    redirect_to users_path
+    if user.save(:validate => false)
+      flash[:error] = "Role Changed"
+      redirect_to "/users"
+    else
+      flash[:error] = "Role not Changed"
+      redirect_to "/users"
+    end
   end
 
   def newClerk
