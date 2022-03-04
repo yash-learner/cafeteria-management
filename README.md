@@ -58,3 +58,11 @@ There are 3 personas:
 - can manage the users.
 
 
+--------
+
+Future plans:
+- integrate Amazon S3 for image of menu item.
+- Generate invoices, reports, summary
+- Improve orders page, integrate email server or Amazon SES/SNS
+- Rewrite complete frontend(HTML/CSS) with React.js
+- Integrate payment gateways.
