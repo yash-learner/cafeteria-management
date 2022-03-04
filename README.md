@@ -6,6 +6,9 @@
 
 # Credentials to test the [Website](https://yaswantth-cafeteria-management.herokuapp.com/)
 
+
+> **It might take some time to load the website becuase the website is hosted on free-tier plan of Heroku.**
+
 <h3>Owner</h3>
   Email: cafeowner@gmail.com<br>
   Password: owner
