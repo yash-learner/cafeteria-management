@@ -1,5 +1,5 @@
 class MenuItemsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  # skip_before_action :verify_authenticity_token
   before_action :ensure_owner_logged_in, only: [:new, :editMenu, :create, :update, :destroy, :updateEach]
 
   def index
@@ -24,24 +24,23 @@ class MenuItemsController < ApplicationController
   end
 
   def create
-    menu_category_id = params[:menu_category_id]
-    menu_item_name = params[:name]
-    menu_item_description = params[:description]
-    menu_item_price = (params[:price].to_i) * 100
-    new_menu_item = MenuItem.new(
-      menu_category_id: menu_category_id,
-      name: menu_item_name,
-      description: menu_item_description,
-      price: menu_item_price,
-    )
-    if new_menu_item.save
-      flash[:error] = "Menu Item #{new_menu_item.name} has been created in #{new_menu_item.menu_category.name}!"
-      redirect_to "/"
+    if params[:item_image] == ""
+      puts "ok pic"
+      flash[:error] = "Please attach item image"
     else
-      flash[:error] = new_menu_item.errors.full_messages.join("<br/>")
-      redirect_to "/menu_items/new"
+      new_menu_item = MenuItem.new(
+        params.permit(:menu_category_id, :name, :description, :price, :item_image)
+      )
+      if new_menu_item.save
+        flash[:error] = "Menu Item #{new_menu_item.name} has been created in #{new_menu_item.menu_category.name}!"
+        redirect_to "/"
+      else
+        flash[:error] = new_menu_item.errors.full_messages.join("<br/>")
+        redirect_to "/menu_items/new"
+      end
     end
   end
+
 
   def update
     menu_item_id = params[:id]
@@ -75,8 +74,3 @@ class MenuItemsController < ApplicationController
     render "/menu_items/update"
   end
 end
-
-# <div class="Form-section">
-# <p class="FormInput-label">Menu Item:</p>
-# <%= form.select :id, options_for_select(@menu_items.get_items(menu_category_id) { |u| [u.name, u.id] }) %>
-# </div>

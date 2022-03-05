@@ -11,8 +11,11 @@
         <% category.menu_items.get_items(category.id).each do |item| %>
           <li class="MenuItem">
             <div class="MenuItem-container">
+              <div ><%= image_tag item.item_image, size: "100" %></div>
+            </div>
+            <div class="MenuItem-container">
               <div ><h4 class = "MenuItem-name"><%= item.name %></h4></div>
-              <div><span class="MenuItem-price">₹<%= item.price.to_i / 100 %></span></div>
+              <div><span class="MenuItem-price">₹<%= item.price %></span></div>
             </div>
             <% # <div><span>-</span>Add<span>+</span></div> %>
             <div class="menu-item-quantity">
@@ -71,14 +74,14 @@
     </div>
     <div>
     <span><%= item.quantity %></span>
-    <span>₹<%= item.price.to_i / 100 %></span>
+    <span>₹<%= item.price %></span>
     </div>
     </li>
     <% end %>
 </ul>
 <div class="CartTotal">
 <h4 class="MenuItem-name">Sub Total:<h4>
-<span class="CartTotal-price">₹<%= @cart_items.sum(:price) / 100 %></span>
+<span class="CartTotal-price">₹<%= @cart_items.sum(:price) %></span>
 </div>
 <%= button_to "CHECKOUT - - ->", "/orders", :method => :get, :form_class => "my_class" %>
 <% else %>

@@ -32,7 +32,7 @@
               <div ><h4 class = "MenuItem-name"><%= order_item.menu_item_name %></h4></div>
             </div>
             <div class="MenuItem-container">
-              <div><span class="MenuItem-price"><%= order_item.menu_item_price / 100 %> X <%= order_item.quantity %>= ₹<%= order_item.price / 100 %></span></div>
+              <div><span class="MenuItem-price"><%= order_item.menu_item_price %> X <%= order_item.quantity %>= ₹<%= order_item.price %></span></div>
             </div>
         <% end %>
           </li>
@@ -40,7 +40,7 @@
 
   <% end %>
             <div class="MenuItem-container">
-              <div><span class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) / 100 %></span></div>
+              <div><span class="OrderPrice">Total Price:₹<%= order.order_items.sum(:price) %></span></div>
             </div>
     </div>
   </li>

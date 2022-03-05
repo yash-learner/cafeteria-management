@@ -6,13 +6,13 @@
     </div>
     <div>
     <span><%= item.quantity %></span>
-    <span>₹<%= item.price.to_i / 100 %></span>
+    <span>₹<%= item.price %></span>
     </div>
     </li>
     <% end %>
 </ul>
 <div class="CartTotal">
 <h4 class="MenuItem-name">Sub Total:<h4>
-<span class="CartTotal-price">₹<%= @cart_items.sum(:price) / 100 %></span>
+<span class="CartTotal-price">₹<%= @cart_items.sum(:price) %></span>
 </div>
 <%= button_to "ORDER - - ->", "/orders", :method => :post, :form_class => "my_class" %>
