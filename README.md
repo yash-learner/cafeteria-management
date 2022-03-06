@@ -63,9 +63,12 @@ There are 3 personas:
 
 --------
 
-Future plans:
-- integrate Amazon S3 for image of menu item.
+**Upcoming Features:**
+
+- integrate Amazon S3 for storing image of menu item.
 - Generate invoices, reports, summary
+- Add forgot password feature
+- improve look of the website
 - Improve orders page, integrate email server or Amazon SES/SNS
 - Rewrite complete frontend(HTML/CSS) with React.js
 - Integrate payment gateways.
