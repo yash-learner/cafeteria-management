@@ -11,7 +11,7 @@
 
 <h3>Owner</h3>
   Email: cafeowner@gmail.com<br>
-  Password: owner
+  Password: USER@owner#17
 
 <h3>Online Customer</h3>
   Email: demo@gmail.com<br>
@@ -65,8 +65,9 @@ There are 3 personas:
 
 **Upcoming Features:**
 
-- integrate Amazon S3 for storing image of menu item.
+~~- integrate Amazon S3 for storing image of menu item.~~ 07/03/2022 => need to know and apply strict cors origin 
 - Add AJAX or javascript fetch to send requests without page reload.
+- Improve look all the pages
 - Generate invoices, reports, summary.
 - Add forgot password feature.
 - improve look of the website.
