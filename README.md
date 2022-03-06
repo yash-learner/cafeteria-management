@@ -12,7 +12,7 @@
 <h3>Owner</h3>
   Email: cafeowner@gmail.com<br>
   Password: owner
-  
+
 <h3>Online Customer</h3>
   Email: demo@gmail.com<br>
   Password: USER@demo$4
@@ -55,7 +55,7 @@ There are 3 personas:
 
 - Nobody can sign-up as an owner. Instead, the live application should come with an owner already created.
 - Can create clerks and other owners.
-- Owner can manage the menu such as view, create, update, active/inactive a menu category
+- Owner can manage the menu such as view, create, update, active/inactive a menu category.
 - Can manage menu items in menu categories such as add, delete and update.
 - Can see reports.
 - can manage the users.
