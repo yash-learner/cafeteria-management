@@ -22,7 +22,8 @@ class OrderItemsController < ApplicationController
   end
 
   def order
-    CartItem.all.each do |item|
+    items = CartItem.where(cart_id: current_user.cart.id)
+    items.each do |item|
       order_item = OrderItem.new(
         order_id: params[:id],
         menu_item_id: item.menu_item_id,
