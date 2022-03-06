@@ -66,9 +66,10 @@ There are 3 personas:
 **Upcoming Features:**
 
 - integrate Amazon S3 for storing image of menu item.
-- Generate invoices, reports, summary
-- Add forgot password feature
-- improve look of the website
-- Improve orders page, integrate email server or Amazon SES/SNS
+- Add AJAX or javascript fetch to send requests without page reload.
+- Generate invoices, reports, summary.
+- Add forgot password feature.
+- improve look of the website.
+- Improve orders page, integrate email server or Amazon SES/SNS.
 - Rewrite complete frontend(HTML/CSS) with React.js
 - Integrate payment gateways.
