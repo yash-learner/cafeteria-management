@@ -74,3 +74,4 @@ There are 3 personas:
 - Improve orders page, integrate email server or Amazon SES/SNS.
 - Rewrite complete frontend(HTML/CSS) with React.js
 - Integrate payment gateways.
+- Add temporary login as user, owner on login page to test the webiste instead of providing credentials in repo's readme.md
